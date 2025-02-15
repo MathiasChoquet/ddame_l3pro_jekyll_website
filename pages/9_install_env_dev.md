@@ -64,16 +64,41 @@ Git est un système de contrôle de version distribué utilisé pour suivre les 
 
 Hugo est un générateur de site statique extrêmement rapide et flexible, écrit en Go. Il est utilisé pour créer des blogs, des sites documentaires et des portfolios sans nécessiter de base de données.
 
-### Sur Windows
+### Pourquoi ai-je besoin de Go (Golang) pour Hugo ?
 
-1. **Téléchargez l’archive Hugo** depuis le site officiel : [Hugo Releases](https://github.com/gohugoio/hugo/releases)
-2. **Extrayez les fichiers** et ajoutez `hugo.exe` au `PATH`.
-   - Copiez `hugo.exe` dans `C:\Program Files\Hugo\`
-   - Ajoutez `C:\Program Files\Hugo\` au `PATH` via les **Variables d’environnement**.
-3. **Vérifiez l’installation** en exécutant :
-   ```bash
-   hugo version
+Hugo est écrit en **Go (Golang)**, un langage de programmation développé par Google. Cependant, vous n'avez pas besoin d'installer Go séparément, car Hugo est disponible sous forme d'un binaire compilé qui fonctionne sans dépendances supplémentaires.
+
+### Installation avec Chocolatey (Choco)
+
+#### Qu'est-ce que Chocolatey ?
+
+[Chocolatey](https://chocolatey.org/) est un gestionnaire de paquets pour Windows, similaire à `apt` sous Linux ou `brew` sous macOS. Il permet d'installer, mettre à jour et gérer des logiciels depuis la ligne de commande. Il est utilisé pour simplifier l'installation de nombreux outils comme **Git, Node.js, Python, Visual Studio Code, et Hugo**.
+
+#### Installation de Chocolatey
+
+1. **Ouvrez PowerShell en mode administrateur** (Recherchez _PowerShell_, faites un clic droit et choisissez _Exécuter en tant qu’administrateur_).
+2. **Exécutez la commande suivante** :
+   ```powershell
+   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
    ```
+3. **Vérifiez l'installation** en exécutant :
+   ```powershell
+   choco --version
+   ```
+
+#### Installation de Hugo avec Chocolatey
+
+Une fois Chocolatey installé, vous pouvez installer Hugo avec une seule commande :
+
+```powershell
+choco install hugo -y
+```
+
+**Vérifiez l'installation de Hugo** :
+
+```powershell
+hugo version
+```
 
 ### Liens pour autres systèmes :
 
@@ -88,17 +113,24 @@ Hugo est un générateur de site statique extrêmement rapide et flexible, écri
 
 Jekyll est un générateur de site statique écrit en Ruby. Il est principalement utilisé pour créer des blogs et des sites documentaires et est compatible avec GitHub Pages pour un déploiement simple.
 
+### Pourquoi ai-je besoin de Ruby pour Jekyll ?
+
+Jekyll repose sur **Ruby**, un langage de programmation flexible et utilisé pour le développement web. Jekyll et ses dépendances sont gérées sous forme de **gemmes Ruby**, qui sont des bibliothèques de code réutilisables distribuées via le gestionnaire de paquets RubyGems. Les gemmes permettent d'ajouter des fonctionnalités à Ruby et de faciliter la gestion des dépendances nécessaires au fonctionnement de Jekyll.
+
 ### Sur Windows
 
 Jekyll nécessite **Ruby** pour fonctionner.
 
 1. **Installez Ruby avec RubyInstaller** :
+
    - Téléchargez **Ruby+Devkit** depuis [rubyinstaller.org](https://rubyinstaller.org/)
    - Exécutez l’installateur et cochez `Add Ruby to PATH`
    - Après l’installation, ouvrez **Git Bash** ou **PowerShell** et exécutez :
      ```bash
      ridk install
      ```
+     Cette commande est essentielle pour configurer correctement l'environnement Ruby. Elle permet d’installer des outils de compilation nécessaires pour certaines gemmes utilisées par Jekyll. Sans cette étape, certaines dépendances pourraient ne pas s’installer correctement, ce qui entraînerait des erreurs lors de l'exécution de Jekyll.
+
 2. **Installez Jekyll et Bundler** :
    ```bash
    gem install jekyll bundler
